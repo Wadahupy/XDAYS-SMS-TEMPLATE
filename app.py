@@ -354,7 +354,7 @@ def main():
     st.set_page_config(page_title="📲 SMS Blast XDAYS", layout="wide")
     st.title("📱 SMS Blast XDAYS")
 
-    tabs = st.tabs(["Step 1️⃣ Upload & Align", "Step 2️⃣ Add PDA", "Step 3️⃣ Review & Export"])
+    tabs = st.tabs(["Step 1️⃣ Upload & Align", "Step 2️⃣ Review & Export"])
 
     # --- Step 1
     with tabs[0]:
@@ -407,27 +407,9 @@ def main():
                 st.text_area("Debug Traceback", traceback.format_exc(), height=200)
 
 
-    # --- Step 2
-    with tabs[1]:
-        st.header("Step 2: Merge PDA (Optional)")
-        st.markdown("Upload a **PDA/Worklist file** to populate PDA amounts via `LOAN NUMBER` match.")
-        if "processed_main" not in st.session_state:
-            st.warning("Please complete Step 1 first.")
-        else:
-            pda_upload = st.file_uploader("📂 Upload PDA Worklist", type=["csv", "xls", "xlsx"])
-            if pda_upload:
-                try:
-                    pda_df = pd.read_csv(pda_upload, dtype=str) if pda_upload.name.endswith(".csv") else pd.read_excel(pda_upload, dtype=str)
-                    merged = xlookup_pda(st.session_state["processed_main"], pda_df)
-                    st.session_state["processed_main"] = merged
-                    st.dataframe(merged.head(10), use_container_width=True)
-                    st.success("✅ PDA merged successfully.")
-                except Exception as e:
-                    st.error(f"Error during PDA merge: {e}")
-
     # --- Step 3
-    with tabs[2]:
-        st.header("Step 3: Review & Export Final Output")
+    with tabs[1]:
+        st.header("Step 2: Review & Export Final Output")
 
         if "processed_main" not in st.session_state:
             st.warning("Please finish Steps 1 & 2 first.")
