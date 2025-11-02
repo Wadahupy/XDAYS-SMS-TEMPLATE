@@ -357,7 +357,7 @@ def process_data(df: pd.DataFrame, cycle: str) -> pd.DataFrame:
 # =========================================================
 def main():
     st.set_page_config(page_title="📲 SMS Blast XDAYS", layout="wide")
-    st.title("📱 SMS Blast XDAYS — CARDS Processing Flow")
+    st.title("📱 SMS Blast XDAYS")
 
     tabs = st.tabs(["Step 1️⃣ Upload & Align", "Step 2️⃣ Add PDA", "Step 3️⃣ Review & Export"])
 
