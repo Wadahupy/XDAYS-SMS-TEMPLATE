@@ -5,11 +5,6 @@ from typing import List, Dict
 from datetime import datetime
 import pandas as pd
 import streamlit as st
-from dotenv import load_dotenv
-import os
-
-
-load_dotenv()
 # =========================================================
 # CONFIGURATION
 # =========================================================
@@ -59,21 +54,21 @@ EXPORT_HEADERS = [h for h in TARGET_HEADERS if h != "PREVIEW"]
 
 # SMS Template Dictionary
 TEMPLATES = {
-    "CUT OFF SMS": os.getenv("CUT_OFF_SMS", ""),
-    "MPR 3D CUTOFF SMS": os.getenv("MPR_3D_CUTOFF_SMS", ""),
-    "MPR-PDA L2DY CUTOFF SMS": os.getenv("MPR_PDA_L2DY_CUTOFF_SMS", ""),
-    "AFTER DUE DATE SMS": os.getenv("AFTER_DUE_DATE_SMS", ""),
-    "TPAP SMS": os.getenv("TPAP_SMS", ""),
-    "BP SMS (MPR-PDA)": os.getenv("BP_SMS_MPR_PDA", ""),
-    "BP SMS NOT DUE (AOD-MPR)": os.getenv("BP_SMS_NOT_DUE_AOD_MPR", ""),
-    "AOD-MPR": os.getenv("AOD_MPR", ""),
-    "PTP REMINDER SMS": os.getenv("PTP_REMINDER_SMS", ""),
-    "PTP SMS": os.getenv("PTP_SMS", ""),
-    "UNCONTACTED SMS": os.getenv("UNCONTACTED_SMS", ""),
-    "PAYDAY SMS": os.getenv("PAYDAY_SMS", ""),
-    "PRE PAYDAY SMS": os.getenv("PRE_PAYDAY_SMS", ""),
-    "INSUFF SMS (MPR-PDA)": os.getenv("INSUFF_SMS_MPR_PDA", ""),
-    "INSUFF SMS NOT DUE (AOD-MPR)": os.getenv("INSUFF_SMS_NOT_DUE_AOD_MPR", ""),
+    "CUT OFF SMS": st.secrets["templates"]["CUT_OFF_SMS"],
+    "MPR 3D CUTOFF SMS": st.secrets["templates"]["MPR_3D_CUTOFF_SMS"],
+    "MPR-PDA L2DY CUTOFF SMS": st.secrets["templates"]["MPR_PDA_L2DY_CUTOFF_SMS"],
+    "AFTER DUE DATE SMS": st.secrets["templates"]["AFTER_DUE_DATE_SMS"],
+    "TPAP SMS": st.secrets["templates"]["TPAP_SMS"],
+    "BP SMS (MPR-PDA)": st.secrets["templates"]["BP_SMS_MPR_PDA"],
+    "BP SMS NOT DUE (AOD-MPR)": st.secrets["templates"]["BP_SMS_NOT_DUE_AOD_MPR"],
+    "AOD-MPR": st.secrets["templates"]["AOD_MPR"],
+    "PTP REMINDER SMS": st.secrets["templates"]["PTP_REMINDER_SMS"],
+    "PTP SMS": st.secrets["templates"]["PTP_SMS"],
+    "UNCONTACTED SMS": st.secrets["templates"]["UNCONTACTED_SMS"],
+    "PAYDAY SMS": st.secrets["templates"]["PAYDAY_SMS"],
+    "PRE PAYDAY SMS": st.secrets["templates"]["PRE_PAYDAY_SMS"],
+    "INSUFF SMS (MPR-PDA)": st.secrets["templates"]["INSUFF_SMS_MPR_PDA"],
+    "INSUFF SMS NOT DUE (AOD-MPR)": st.secrets["templates"]["INSUFF_SMS_NOT_DUE_AOD_MPR"],
 }
 
 
