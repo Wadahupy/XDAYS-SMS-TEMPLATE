@@ -56,8 +56,8 @@ EXPORT_HEADERS = [h for h in TARGET_HEADERS if h != "PREVIEW"]
 # SMS Template Dictionary
 TEMPLATES = {
     "CUT OFF SMS": st.secrets["templates"]["CUT_OFF_SMS"],
-    "MPR 3D CUTOFF SMS": st.secrets["templates"]["MPR_3D_CUTOFF_SMS"],
-    "MPR-PDA L2DY CUTOFF SMS": st.secrets["templates"]["MPR_PDA_L2DY_CUTOFF_SMS"],
+    "MPR (3DYS) CUTOFF SMS": st.secrets["templates"]["MPR_3D_CUTOFF_SMS"],
+    "MPR-PDA (L2DYS) CUTOFF SMS": st.secrets["templates"]["MPR_PDA_L2DY_CUTOFF_SMS"],
     "AFTER DUE DATE SMS": st.secrets["templates"]["AFTER_DUE_DATE_SMS"],
     "TPAP SMS": st.secrets["templates"]["TPAP_SMS"],
     "BP SMS (MPR-PDA)": st.secrets["templates"]["BP_SMS_MPR_PDA"],
@@ -446,7 +446,7 @@ def main():
             )
             
             st.download_button(
-            "📥 Full CSV (with Preview)",
+            "📥 Full EXCEL (with Preview)",
             csv_full,
             file_name=f"SMS_FULL_{st.session_state['main_filename']}.csv"
             )
