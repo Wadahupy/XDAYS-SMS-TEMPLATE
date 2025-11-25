@@ -5,6 +5,7 @@ from typing import List, Dict
 from datetime import datetime
 import pandas as pd
 import streamlit as st
+
 # =========================================================
 # CONFIGURATION
 # =========================================================
@@ -346,6 +347,13 @@ def process_data(df: pd.DataFrame, cycle: str) -> pd.DataFrame:
 
     return result
 
+def to_excel_bytes(df: pd.DataFrame) -> bytes:
+    """Convert DataFrame to downloadable Excel file in memory."""
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
+        df.to_excel(writer, index=False, sheet_name="SMS Data")
+    return output.getvalue()
+
 
 # =========================================================
 # STREAMLIT APP
@@ -436,9 +444,12 @@ def main():
                 csv_full,
                 file_name=f"SMS_FULL_{st.session_state['main_filename']}.csv"
             )
-                
-
-
+            
+            st.download_button(
+            "📥 Full CSV (with Preview)",
+            csv_full,
+            file_name=f"SMS_FULL_{st.session_state['main_filename']}.csv"
+            )
 
 
 
